@@ -1,11 +1,10 @@
 import java.util.Scanner;
 
-// Base Account class
 class Account {
-    protected String customerName;
-    protected String accountNumber;
-    protected String accountType;
-    protected double balance;
+    String customerName;
+    String accountNumber;
+    String accountType;
+    double balance;
 
     Account(String name, String accNo, String accType, double bal) {
         this.customerName = name;
@@ -43,23 +42,22 @@ class Account {
     }
 }
 
-// Savings Account
 class SavAcct extends Account {
-    private static final double INTEREST_RATE = 0.05; // 5% annual
+    private static final double INTEREST_RATE = 0.07; 
 
     SavAcct(String name, String accNo, double bal) {
         super(name, accNo, "Savings", bal);
     }
 
     public void computeAndDepositInterest() {
-        double interest = balance * (Math.pow((1 + INTEREST_RATE / 12), 12) - 1); // 1-year compound interest
+        double interest = balance * (Math.pow((1 + INTEREST_RATE / 12), 12) - 1); 
         balance += interest;
         System.out.printf("Interest of %.2f has been added.\n", interest);
         displayBalance();
     }
 }
 
-// Current Account
+
 class CurAcct extends Account {
     private static final double MIN_BALANCE = 5000.0;
     private static final double SERVICE_CHARGE = 1000.0;
@@ -68,7 +66,6 @@ class CurAcct extends Account {
         super(name, accNo, "Current", bal);
     }
 
-    // Check minimum balance and apply penalty if necessary
     public void checkMinimumBalance() {
         if (balance < MIN_BALANCE) {
             System.out.println("Balance below minimum! Service charge of " + SERVICE_CHARGE + " imposed.");
@@ -90,13 +87,13 @@ class CurAcct extends Account {
         } else {
             balance -= amount;
             System.out.println("Withdrawn: " + amount);
-            // Check minimum balance after withdrawal
+            
             checkMinimumBalance();
         }
     }
 }
 
-// Main Bank System
+
 public class BankSystem {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -111,7 +108,7 @@ public class BankSystem {
 
         System.out.print("Enter Initial Balance: ");
         double bal = sc.nextDouble();
-        sc.nextLine(); // consume newline
+        sc.nextLine(); 
 
         System.out.print("Enter Account Type (savings/current): ");
         String type = sc.nextLine().trim().toLowerCase();
@@ -146,8 +143,8 @@ public class BankSystem {
             System.out.print("Enter your choice: ");
 
             int choice = sc.nextInt();
-            sc.nextLine(); // consume newline
-
+            sc.nextLine(); 
+            
             switch (choice) {
                 case 1:
                     System.out.print("Enter amount to deposit: ");
