@@ -25,7 +25,7 @@ public class Externals extends Internals {
 
     public void calculateFinalMarks() {
         for (int i = 0; i < 5; i++) {
-            finalMarks[i] = super.marks[i] + marks[i];  // CIE + SEE
+            finalMarks[i] = super.marks[i] + marks[i]/2;  // CIE + SEE
         }
     }
 
